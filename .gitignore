@@ -1,0 +1,9 @@
+# build output (build.ps1 regenerates these)
+UsbMapper.exe
+app.ico
+
+# runtime data
+config.json
+config.json.tmp
+backups/
+*.log

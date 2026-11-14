@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>USB Mapper</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<header class="top">
+  <div class="top-title">
+    <h1>USB Mapper</h1>
+    <p id="cfg-path" class="muted"></p>
+  </div>
+  <div class="top-status">
+    <span id="chip-mode" class="chip"></span>
+    <span id="chip-active" class="chip neutral"></span>
+    <span id="chip-dirty" class="chip warn" hidden>Nem mentett változások</span>
+  </div>
+  <div class="top-actions">
+    <button id="btn-save" class="primary" type="button" disabled>Mentés</button>
+    <button id="btn-discard" type="button" disabled>Elvetés</button>
+    <button id="btn-pause" type="button">Szünet</button>
+    <button id="btn-quit" type="button">Kilépés</button>
+  </div>
+</header>
+
+<div id="toast" class="toast" hidden></div>
+
+<main>
+  <section class="card">
+    <div class="card-head">
+      <h2>Profilok</h2>
+      <p class="note inline">Az előtérben lévő program szerint vált magától. A szerkesztett profil:</p>
+    </div>
+    <div id="profile-tabs" class="pills"></div>
+    <div id="profile-edit" class="profile-edit"></div>
+  </section>
+
+  <div class="grid">
+    <section class="card">
+      <div class="card-head">
+        <h2>Eszköz</h2>
+        <select id="device-select" aria-label="Eszköz"></select>
+      </div>
+      <label class="check"><input id="auto-select" type="checkbox" checked> Gombnyomásra kiválasztja a bemenetet</label>
+      <div id="device-view"></div>
+      <p id="device-note" class="note"></p>
+    </section>
+
+    <section class="card" id="panel">
+      <h2 id="sel-name">Válassz bemenetet</h2>
+      <p id="sel-sub" class="muted small"></p>
+      <div id="type-box" class="type-box"></div>
+      <div id="pane"></div>
+    </section>
+  </div>
+
+  <section class="card">
+    <h2 id="all-title">A profil hozzárendelései</h2>
+    <table>
+      <thead><tr><th>Eszköz</th><th>Bemenet</th><th>Művelet</th><th></th></tr></thead>
+      <tbody id="all-rows"></tbody>
+    </table>
+  </section>
+
+  <section class="card" id="macro-card">
+    <div class="card-head">
+      <h2>Makrók</h2>
+      <p class="note inline">Névvel mentett makrók; bármelyik bemenethez, bármelyik profilban hozzárendelhetők.</p>
+    </div>
+    <div id="macro-list" class="pills"></div>
+    <div id="macro-edit" class="macro-edit"></div>
+  </section>
+
+  <section class="card">
+    <h2>Napló</h2>
+    <p class="note">Profilváltások, gombnyomások és hibák. Teszt módban azt is mutatja, mit küldene.</p>
+    <ol id="log" class="log"></ol>
+  </section>
+
+  <p class="note foot">A játék az eredeti gombnyomást is megkapja. Amire itt billentyűt teszel, azt a játékban hagyd kötés nélkül.
+    Mentéskor a korábbi beállítás a <code>backups</code> mappába kerül.</p>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
